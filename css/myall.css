@@ -1,0 +1,82 @@
+    /*此css設為以後每支程式都會用到的*/
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+:root{
+    --mycolor01: #cccccc;
+    --mycolor02: #ffc2c3;
+    --mycolor03: #fe7773;
+    --mycolor04: #e81e25;
+    --mycolor05: #fd9735;
+    --mycolor06: #f26322;
+    --mycolor07: #ff6745;
+    --mycolor08: #f6e0ae;
+    --mycolor09: #fec748;
+    --mycolor10: #fec804;
+    --mycolor11: #d1ede1;
+    --mycolor12: #7bc5ae;
+    --mycolor13: #028c6a;
+    --mycolor14: #85b8cb;
+    --mycolor15: #1d6a96;
+    --mycolor16: #0359ae;
+    --mycolor17: #416eb6;
+    --mycolor18: #715ca8;
+    --mycolor19: #2b103b;
+    --mycolor20: #d3b7d8;
+    --mycolor21: #a13e97;
+    --mycolor22: #632a7e;
+    --mycolor25: #000000;
+
+    /*透明色*/
+    --mycolor23: rgba(0,0,0, .3);
+    --mycolor24: rgba(255, 255, 255, .3);
+    --textcolor01: #ffffff;
+    
+
+}
+body{
+    /*可選用google字體*/
+    font-family: 'Noto Sans TC', sans-serif;
+}
+.fw-100{
+    font-weight: 100;
+}
+.fw-200{
+    font-weight: 200;
+}
+.fw-300{
+    font-weight: 300;
+}
+.fw-400{
+    font-weight: 400;
+}
+.fw-500{
+    font-weight: 500;
+}
+.fw-600{
+    font-weight: 600;
+}
+.fw-700{
+    font-weight: 700;
+}
+.fw-800{
+    font-weight: 800;
+}
+.fw-900{
+    font-weight: 900;
+}
+
+/*
+background-position:背景座標 center center 為中心點
+background-size: cover: 讓圖片充滿整個框架
+*/
+.bg-cover{
+    background-position: center center;
+    background-size: cover;
+}
+
+.demo {
+    width: 50%;
+    padding: 25px;
+    margin: 25px;
+    border: 2px solid var(--mycolor01);
+}

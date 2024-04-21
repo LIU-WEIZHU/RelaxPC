@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新增商品</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="css/adminlte.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="css/all.min.css">
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="css/OverlayScrollbars.min.css">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/myall.css">
+</head>
+
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+        <!-- Navbar -->
+        <nav class="main-header navbar navbar-expand bg-dark">
+            <!-- 上方左邊icon Left navbar links -->
+            <ul class="navbar-nav">
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="#" class="nav-link text-white"><i
+                            class="nav-icon fa-solid fa-house fa-th px-2"></i>後台管理</a>
+                </li>
+
+            </ul>
+            <ul class="navbar-nav ml-auto mr-4">
+                <li class="nav-item d-none d-sm-inline-block px-3">
+                    <span class="nav-link text-white">管理者</span>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <button class="btn btn-outline-light">登出</button>
+                </li>
+            </ul>
+
+        </nav>
+        <!-- /.navbar -->
+
+        <!-- 左側選單 Main Sidebar Container -->
+        <aside class="main-sidebar sidebar-white-primary">
+            <!-- 左側選單 左上角Logo Brand Logo -->
+            <div class="brand-link bg-dark border-dark text-center">
+                <span class="brand-text fw-800">RelaxPC</span>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="sidebar">
+
+                <!-- 左側選單內容 Sidebar Menu -->
+                <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                        data-accordion="false">
+                        <!-- 首頁 -->
+                        <li class="nav-item">
+                            <a href="Relaxpc-admin-index.html" class="nav-link">
+                                <i class="nav-icon fa-solid fa-house fa-th"></i>
+                                <p>
+                                    首頁
+                                </p>
+                            </a>
+                        </li>
+                        <!-- 會員管理 -->
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fa-solid fa-user-group"></i>
+                                <p>
+                                    會員管理
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview border-top border-bottom">
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="nav-icon fa-solid fa-users-gear"></i>
+                                        <p>管理者</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#"
+                                        class="nav-link">
+                                        <i class="nav-icon fa-solid fa-users"></i>
+                                        <p>會員</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- 內容 -->
+                        <li class="nav-item menu-open">
+                            <a href="#" class="nav-link bg-dark">
+                                <i class="nav-icon fa-solid fa-note-sticky"></i>
+                                <p>
+                                    內容
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview border-top border-bottom">
+                                <li class="nav-item ">
+                                    <a href="#" class="nav-link">
+                                        <i class="nav-icon fa-solid fa-cart-shopping"></i>
+                                        <p>訂單紀錄</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="nav-icon fa-solid fa-clock-rotate-left"></i>
+                                        <p>預約紀錄</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="Relaxpc-admin-product.html" class="nav-link bg-secondary">
+                                        <i class="nav-icon fa-solid fa-store"></i>
+                                        <p>商品</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- 設定 -->
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fa-solid fa-gear"></i>
+                                <p>
+                                    系統設定
+                                </p>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- /.sidebar-menu -->
+            </div>
+            <!-- /.sidebar -->
+        </aside>
+
+        <!-- 內容主題及右側首頁及主題 Content Header (Page header) Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+
+            <section class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <h1><i class="nav-icon fa-solid fa-users me-1"></i>商品-新增</h1>
+                        </div>
+                    </div>
+                </div><!-- /.container-fluid -->
+            </section>
+
+            <section>
+                <div class="container">
+                    <div class="row justify-content-center py-5">
+                        <div class="col-md-10 p-3 rounded-3 shadow-lg border border-2 border-dark">
+                            <div class="mb-3 form-floating">
+                                <input type="text" class="form-control" placeholder="" id="product_name"
+                                    name="product_name">
+                                <label for="product_name">商品名稱</label>
+                                <div class="valid-feedback">字數符合規定</div>
+                                <div class="invalid-feedback">字數不符合規定</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="product_amount" class="form-label">商品價格(NT)</label>
+                                <input type="number" min="0" max="100000" value="1" class="form-control"
+                                    id="product_amount" name="product_amount">
+                                <div class="valid-feedback">價格符合規定(1-100000)</div>
+                                <div class="invalid-feedback">價格不符合規定(1-100000)</div>
+                            </div>
+                            <div class="mb-3">
+                                <select name="mylayer" id="mylayer" class="form-select is-invalid">
+                                    <option value="">請選擇類別</option>
+                                </select>
+                                <div class="valid-feedback">已選擇類別</div>
+                                <div class="invalid-feedback">未選擇類別</div>
+                            </div>
+                            <div class="mb-3 form-floating">
+                                <input type="text" class="form-control" placeholder="" id="product_remark"
+                                    name="product_remark">
+                                <label for="pname">商品介紹</label>
+                            </div>
+                            <div class="mb-3">
+                                <label for="product_number" class="form-label">數量: <span class="h5 text-danger"
+                                        id="num01_text">1</span></label>
+                                <input type="range" class="form-range" value="1" min="1" max="10" step="1"
+                                    id="product_number" name="product_number">
+                            </div>
+                            <div class="mb-3">
+                                <label for="fileupload" class="form-label">商品圖片</label>
+                                <input type="file" class="form-control" placeholder="" id="fileupload"
+                                    name="fileupload">
+                                <img src="#" id="prevImg" alt="" class="w-50 mt-3 d-none">
+                            </div>
+                            <div class="form-check form-switch">
+                                <input type="checkbox" name="switch01" id="switch01" class="form-check-input">
+                                <label for="switch01" class="form-check-label">上架</label>
+                            </div>
+                            <div class="text-end">
+                                <a href="#" class="btn btn-primary" id="ok1_btn">確認</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+
+        <footer class="main-footer">
+            <div class="float-right d-none d-sm-block">
+                <b>雲端</b> 2期
+            </div>
+            <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights
+            reserved.
+        </footer>
+        <script src="js/jquery-3.7.1.min.js"></script>
+        <!-- Bootstrap -->
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <!-- 隱藏選單 AdminLTE App -->
+        <script src="js/adminlte.min.js"></script>
+        <!-- fullCalendar 2.2.5 -->
+        <script src="js/moment.min.js"></script>
+        <script src="js/main.js"></script>
+        <!-- chart.js -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <!-- sweetalert2 -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+        <script>
+            var flag_upload = false;
+            var switch01 = "未上架"; //紀錄上架狀態
+            var num01 = 1; //紀錄杯數
+            var flag_pname = false;
+            var flag_price = true;  //已經有價格的初始實
+            var flag_sugar = false;
+
+            $(function () {
+                var dataJSON = {};
+                console.log(JSON.stringify(dataJSON));
+                $.ajax({
+                    type: "POST",
+                    url: "Relaxpc-admin-layer-read_api.php",
+                    data: JSON.stringify(dataJSON),
+                    dataType: "json",
+                    async: false,
+                    success: showlayer,
+                    error: function () {
+                        alert("error-Relaxpc-admin-layer-read_api.php");
+                    }
+                });
+
+                // $("#mylist").click(function () {
+                //     console.log($(this).data("key"));
+                // });
+            });
+
+            $(function () {
+                // 圖片
+                $("#fileupload").change(function () {
+                    console.log(fileupload);
+                    console.log(fileupload.files[0]);
+                    console.log(fileupload.files[0].name);
+                    console.log(fileupload.files[0].size);
+                    console.log(fileupload.files[0].type);
+                    //圖片於瀏覽器的暫存路徑
+                    console.log(URL.createObjectURL(fileupload.files[0]));
+
+                    if (fileupload.files[0].type == "image/jpeg" || fileupload.files[0].type == "image/png") {
+                        //顯示預覽圖
+                        $("#prevImg").removeClass("d-none");
+                        $("#prevImg").attr("src", URL.createObjectURL(fileupload.files[0]));
+                        flag_upload = true;
+                    } else {
+                        console.log("圖片格式不符合!");
+                        flag_upload = false;
+                    }
+                });
+
+                //監聽_即時監聽 product_amount
+                $("#product_amount").bind("input propertychange", function () {
+                    console.log($(this).val());
+                    if ($(this).val() > 0 && $(this).val() < 100000) {
+                        //價格符合規定
+                        $(this).removeClass("is-invalid");
+                        $(this).addClass("is-valid");
+                        flag_price = true;
+                    } else {
+                        //價格不符合規定
+                        $(this).removeClass("is-valid");
+                        $(this).addClass("is-invalid");
+                        flag_price = false;
+                    }
+                });
+
+                //監聽_即時監聽 #mylayer
+                $("#mylayer").bind("input propertychange", function () {
+                    if ($(this).val() != "") {
+                        //已選擇類別
+                        $(this).removeClass("is-invalid");
+                        $(this).addClass("is-valid");
+                        flag_sugar = true;
+                    } else {
+                        $(this).removeClass("is-valid");
+                        $(this).addClass("is-invalid");
+                        flag_sugar = false;
+                    }
+                });
+
+                //監聽_即時監聽 #product_name
+                $("#product_name").bind("input propertychange", function () {
+                    console.log($(this).val().length);
+                    if ($(this).val().length > 0 && $(this).val().length < 64) {
+                        //字數符合規定
+                        $(this).removeClass("is-invalid");
+                        $(this).addClass("is-valid");
+                        flag_pname = true;
+                    } else {
+                        //字數不符合規定 
+                        $(this).removeClass("is-valid");
+                        $(this).addClass("is-invalid");
+                        flag_pname = false;
+                    }
+                });
+
+                //監聽_即時監聽  range #num01
+                $("#product_number").bind("input propertychange", function () {
+                    console.log($(this).val());
+                    $("#num01_text").text($(this).val());
+                    num01 = $(this).val()
+                });
+
+                // 監聽確認按鈕 #ok_btm
+                $("#ok1_btn").click(function () {
+
+                    if (flag_upload) {
+                        var formdata = new FormData();
+                        formdata.append("file", fileupload.files[0]);
+                        console.log(formdata);
+                        // 傳遞至formdata至後端 api
+                        $.ajax({
+                            type: "POST",
+                            url: "Relaxpc-admin-fileupload_api.php",
+                            data: formdata,
+                            dataType: "json",
+                            cache: false,
+                            contentType: false,
+                            processData: false,
+                            async: false,
+                            success: showphoto,
+                            error: function () {
+                                alert("error-Relaxpc-admin-fileupload_api.php");
+                            }
+                        });
+                    } else {
+                        alert("先選取上傳圖片!");
+                    }
+
+                    var dataJSON = {};
+                    dataJSON["product_name"] = $("#product_name").val();
+                    dataJSON["product_number"] = $("#product_number").val();
+                    dataJSON["product_amount"] = $("#product_amount").val();
+                    dataJSON["product_photo"] = product_photo;
+                    dataJSON["product_type"] = $("#mylayer").val();
+                    dataJSON["product_remark"] = $("#product_remark").val();
+                    console.log(JSON.stringify(dataJSON));
+
+                    //傳遞至後端
+                    $.ajax({
+                        type: "POST",
+                        url: "Relaxpc-admin-create_api.php",
+                        data: JSON.stringify(dataJSON),
+                        dataType: "json",
+                        success: showdata,
+                        error: function () {
+                            alert("error-Relaxpc-admin-create_api.php");
+                        }
+                    });
+                });
+            });
+
+            function showphoto(data) {
+                console.log("--showdata_add_photo--");
+                console.log(data);
+                product_photo = data.datainfo.serverfilename;
+                console.log("product_photo: " + product_photo);
+            }
+
+            function showdata(data) {
+                console.log("--showdata_add_product--");
+                console.log(data);
+                if (data.state) {
+                    alert(data.message);
+                    // location.href = "http://192.168.10.62/2024/project13/project_bg_product_Read.html";
+                } else {
+                    alert(data.message);
+                    console.log(data);
+                }
+            }
+
+            function showlayer(data) {
+                console.log(data);
+                $("#mylayer").empty();
+                console.log(data.data)
+                var strHTML =
+                    '<option value="">請選擇類別</option>'
+                data.data.forEach(function (item) {
+                    console.log(item);
+                    strHTML += '<option value="' + item.ID + '">' + item.LayerName + '</option>'
+                });
+                $("#mylayer").append(strHTML);
+            }
+
+        </script>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>後台管理</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/myall.css">
+</head>
+
+<body>
+    <div class="header p-4">
+        <div class="fs-1 text-center fw-900 text-bg-success mt-4 py-4">後台管理</div>
+    </div>
+    <div class="container-fluid">
+        <div class="row" style="height: 80vh;">
+            <div class="col-md-3 py-3">
+                <ul class="list-group" id="mylist">
+                    <li class="list-group-item">
+                        <div class="d-flex">
+                            <h5>CPU</h5>
+                            <span class="badge text-bg-success ms-auto">99</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-9">
+                <div class="row" id="myproduct">
+                    <div class="col-md-4 p-3 border border-3 border-danger shadow shadow-lg rounded rounded-5">
+                        <h4 class="fw-900">Inetl i9-14900</h4>
+                        <h5 class="fw-900">數量:20</h5>
+                        <h5 class="fw-900">價格:8000</h5>
+                        <h5 class="fw-900">圖片:</h5>
+                        <h5 class="fw-900">介紹</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <a class="btn btn-primary" href="Relaxpc-admin-create.html" type="button">新增</a>
+    </div>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script>
+        var page = 1;
+        var perpage = 10;
+
+        $(function () {
+            var dataJSON = {};
+            dataJSON["page"] = page;
+            dataJSON["perpage"] = perpage;
+            console.log(JSON.stringify(dataJSON));
+            $.ajax({
+                type: "POST",
+                url: "Relaxpc-layer-read_api.php",
+                data: JSON.stringify(dataJSON),
+                dataType: "json",
+                async: false,
+                success: showdata_layer,
+                error: function () {
+                    alert("error-Relaxpc-layer-read_api.php");
+                }
+            });
+
+            // $("#mylist").click(function () {
+            //     console.log($(this).data("key"));
+            // });
+        });
+
+        $(function () {
+            var dataJSON = {};
+            dataJSON["page"] = page;
+            dataJSON["perpage"] = perpage;
+            console.log(JSON.stringify(dataJSON));
+            $.ajax({
+                type: "POST",
+                url: "Relaxpc-admin-read_api.php",
+                data: JSON.stringify(dataJSON),
+                dataType: "json",
+                async: false,
+                success: showdata,
+                error: function () {
+                    alert("error-Relaxpc-admin-read_api.php");
+                }
+            });
+
+            // $("#mylist").click(function () {
+            //     console.log($(this).data("key"));
+            // });
+        });
+
+
+        function showdata_layer(data) {
+            console.log(data);
+            $("#mylist").empty();
+            console.log(data.data)
+            data.data.forEach(function (item) {
+                // console.log(item);
+                var strHTML =
+                    '<li class="list-group-item">' +
+                    '<div class="d-flex">' +
+                    '<h5>' + item.LayerName + '</h5>' +
+                    '<span class="badge text-bg-success ms-auto">99</span>' +
+                    '</div>' +
+                    '</li>';
+                $("#mylist").append(strHTML);
+            });
+        }
+
+        function showdata(data) {
+            console.log(data)
+
+
+
+
+            $("#myproduct").empty();
+            data.data.forEach(function (item) {
+                var strHTML =
+                    '<div class="col-md-4 p-3 border border-3 border-danger shadow shadow-lg rounded rounded-5">' +
+                    '<h4 class="fw-900">' + item.product_name + '</h4>' +
+                    '<h5 class="fw-900">數量:' + item.product_number + '</h5>' +
+                    '<h5 class="fw-900">價格:' + item.product_amount + '</h5>' +
+                    '<h5 class="fw-900">圖片:<img src="upload/' + item.product_photo + '" style="height: 200px; width: 300px;" c></h5>' +
+                    '<h5 class="fw-900">介紹:' + item.product_remark + '</h5>' +
+                    '</div>';
+                $("#myproduct").append(strHTML);
+            });
+
+        }
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+body{
+    background-color: var(--mycolor01);
+}
+
+.wrapper{
+    width: 1024px;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+nav{
+    background-color: var(--mycolor02);
+    text-align: center;
+}
+
+nav ul{
+    display: inline-block;
+}
+
+nav ul li{
+    list-style-type: none;
+    float:left;
+}
+
+nav ul li a{
+    display: block;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 15px;
+    padding-right: 15px;    
+    margin-right: 3px;
+    background-color: var(--mycolor03);
+    text-decoration: none;
+}
+
+.content_in{
+    background-color: var(--mycolor04);
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.content_in h1{
+    color: var(--mycolor05);
+    text-align: center;
+}

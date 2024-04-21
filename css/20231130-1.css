@@ -1,0 +1,159 @@
+body {
+    background-color: var(--mycolor01);
+    padding-top: 15px;
+}
+
+/*.wrapper:前面有.代表從class尋找 沒有代表找元件名稱*/
+.wrapper {
+    width: 1024px;
+    /*margin內距:置中口訣:上下0左右auto*/
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.sidebar {
+    background-color: var(--mycolor09);
+    width: 230px;
+    /*vh:裝置高度*/
+    height: 56.8vh;
+    float: left;
+    margin-right: 30px;
+    margin-top: 5px;
+}
+
+.sidebar nav ul li {
+    list-style-type: none;
+}
+
+.sidebar nav ul li a {
+    background-color: var(--mycolor11);
+    display: block;
+    width: 150px;
+    height: 60px;
+    text-align: center;
+    margin-top: 5px;
+    line-height: 60px;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.sidebar nav ul li a:hover {
+    background-color: var(--mycolor12);
+    color: var(--textcolor01);
+}
+
+.banner nav {
+    background-color: var(--mycolor15);
+    text-align: center;
+}
+
+.banner nav ul {
+    /*display:顯示 inline:橫的block:一格一格*/
+    display: inline-block;
+}
+
+.banner nav ul li {
+    /*將原本的.消除 list:陣列 style:樣式 */
+    list-style-type: none;
+    /*表格打橫*/
+    float: left;
+}
+
+.banner nav ul li a {
+    /*display: block:顯示格子化*/
+    display: block;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: var(--mycolor18);
+    /*右行距*/
+    margin-right: 5px;
+    /*text-decoration:格式(例如底線) none:不要*/
+    text-decoration: none;
+    color: white;
+    /*字體變為粗體 bolder為粗體 已套用google font，可以調整粗度*/
+    font-weight: 900;
+}
+
+/*當滑鼠移至座標，背景色改變*/
+.banner nav ul li a:hover {
+    background-color: var(--mycolor16);
+}
+
+.content_in {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: var(--mycolor02);
+    margin-top: 5px;
+}
+
+.content_in h1 {
+    color: var(--mycolor04);
+    text-align: center;
+}
+
+.content_in p {
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+.content_in a {
+    display: block;
+    text-align: center;
+    width: 120px;
+    height: 40px;
+    background-color: var(--mycolor04);
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: auto;
+    margin-right: auto;
+    text-decoration: none;
+    color: white;
+    /*line-height:垂直置中*/
+    line-height: 40px;
+    font-weight: bolder;
+}
+
+.content_in a:hover {
+    color: #da7373;
+    background-color: var(--mycolor03);
+}
+
+.footer {
+    background-color: var(--mycolor08);
+    text-align: center;
+}
+
+.footer p {
+    font-size: 20px;
+    font-weight: bolder;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+/*回應式網頁設計(RWD):隨著螢幕大小調整視窗，上限到1024，0~1024才適用*/
+@media screen and (max-width: 1024px) {
+    .wrapper {
+        width: 100%;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        text-align: center;
+    }
+
+    .sidebar ul {
+        display: inline-block;
+    }
+
+    .sidebar ul li {
+        float: left;
+        margin-right: 5px;
+    }
+}

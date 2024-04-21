@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>最新消息</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/myall.css">
+</head>
+<body>
+    <!-- section01 navbar -->
+    <section>
+        <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="Relaxpc-index.html">首頁</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="Relaxpc-new.html">最新消息</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Relaxpc-discount.html">促銷活動</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Relaxpc-product.html">產品</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Relaxpc-buy.html">配單</a>
+                        </li>
+                    </ul>
+                    <div>
+                        <li class="nav-item" id="user_btn">
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal">
+                                <i class="fa-solid fa-user fa-2x text-danger"></i>
+                            </a>
+                        </li>
+                    </div>
+                    <button class="btn btn-danger d-none" id="logout_btn">登出</button>
+                </div>
+            </div>
+        </nav>
+    </section>
+
+    <!-- section01 loginModal -->
+    <section>
+        <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header text-bg-warning">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">會員登入</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="" class="form-label">帳號</label>
+                            <input type="text" class="form-control" placeholder="請輸入帳號!" id="login_username"
+                                name="login_username">
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">密碼</label>
+                            <input type="password" class="form-control" placeholder="請輸入密碼!" id="login_password"
+                                name="login_password">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#" class="me-auto" data-bs-toggle="modal" data-bs-target="#registerModal">註冊帳號</a>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            取消</button>
+                        <button type="button" class="btn btn-warning" id="login_btn">
+                            確認登入</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- section01 registerModal -->
+    <section>
+        <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header bg-warning">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">會員註冊</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label for="username" class="form-label">帳號</label>
+                                    <input type="text" id="username" name="username" class="form-control"
+                                        placeholder="請輸入帳號 6~16字">
+                                    <div class="valid-feedback" id="valid_message">帳號輸入格式正確</div>
+                                    <div class="invalid-feedback" id="invalid_message">帳號輸入格式錯誤</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="userpwd" class="form-label">密碼</label>
+                                    <input type="password" id="userpwd" name="userpwd" class="form-control"
+                                        placeholder="請輸入密碼 6~16字">
+                                    <div class="valid-feedback">密碼輸入格式正確</div>
+                                    <div class="invalid-feedback">密碼輸入格式錯誤</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="repassword" class="form-label">確認密碼</label>
+                                    <input type="password" id="repassword" name="repassword" class="form-control"
+                                        placeholder="再次輸入密碼">
+                                    <div class="valid-feedback">密碼輸入正確</div>
+                                    <div class="invalid-feedback">密碼輸入錯誤</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="useraddr" class="form-label">地址</label>
+                                    <input type="text" id="useraddr" name="useraddr" class="form-control"
+                                        placeholder="請輸入地址 最多64字">
+                                    <div class="valid-feedback">地址輸入格式正確</div>
+                                    <div class="invalid-feedback">地址輸入格式錯誤</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="userphone" class="form-label">電話</label>
+                                    <input type="text" id="userphone" name="userphone" class="form-control"
+                                        placeholder="請輸入電話最多10碼">
+                                    <div class="valid-feedback">電話輸入格式正確</div>
+                                    <div class="invalid-feedback">電話輸入格式錯誤</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="usermail" class="form-label">Email</label>
+                                    <input type="text" id="usermail" name="usermail" class="form-control"
+                                        placeholder="請輸入Email 最多32字">
+                                    <div class="valid-feedback">Email輸入格式正確</div>
+                                    <div class="invalid-feedback">Email輸入格式錯誤</div>
+                                </div>
+                            </div>
+
+                            <div class="col-6 content">
+                                <h3>會員註冊守則</h3>
+                                <p>1. 給他一口氣有很多通知員工建材有點平台閲讀者，廣泛以前社會主義面前法律責任類型暫無溝通戰爭，鐵路能量。</p>
+                                <p>2. 一天值得地方你自己嘉義列表陽明山體力衝突，一副不去許可是誰固定哈哈你有，能夠秘密，兩種無法，成員醫。</p>
+                                <p>3. 演唱精靈教程裝備，培訓適應的話也沒實行我們所謂山西貼圖相同編輯人群，預覽案例交通，生命它的，保健一。</p>
+                                <p>4. 標誌採購看過紀念主演臨床對象，馬上技術相關圖片差不多背景音樂今日鑒定營養，一座房地產，請在點這裡下。</p>
+                                <hr>
+                                <p>我們承諾嚴格保護會員的個人資料和隱私。這些會員資訊將僅用於確認您的身份，確保您的訂單準確發送以及聯絡您，不會被用於其他商業用途。</p>
+                                <div class="form-check">
+                                    <input type="checkbox" id="recheckbox" name="recheckbox"
+                                        class="form-check-input is-invalid">
+                                    <label for="recheckbox" class="form-check-label">已閱讀並遵守</label>
+                                    <div class="valid-feedback">已同意遵守規範</div>
+                                    <div class="invalid-feedback">請勾選！</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#" class="me-auto" data-bs-toggle="modal" data-bs-target="#loginModal">已有帳號，登入去！</a>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                        <button type="button" id="reg_btn" name="reg_btn" class="btn btn-primary">註冊</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>    
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-3.7.1.min.js"></script>
+</body>
+</html>

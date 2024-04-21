@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RelaxPC</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/myall.css">
+    <style>
+        .demo {
+            position: absolute;
+            /*top left：50% 50%設定從中心點的位子開始輸入*/
+            top: 30%;
+            left: 50%;
+            /*真正讓資料顯示置中位子*/
+            transform: translateX(-50%);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- section01 loginModal -->
+    <section>
+        <div class="container">
+            <form class="demo bg-light">
+                <h1 class="fs-5  fw-900 text-center">會員登入</h1>
+                <div class="mb-3">
+                    <label for="" class="form-label">帳號</label>
+                    <input type="text" class="form-control" placeholder="請輸入帳號!" id="login_username"
+                        name="login_username">
+                </div>
+                <div class="mb-3">
+                    <label for="" class="form-label">密碼</label>
+                    <input type="password" class="form-control" placeholder="請輸入密碼!" id="login_password"
+                        name="login_password">
+                </div>
+                <button type="button" class="btn btn-dark" id="login_btn">
+                    確認登入</button>
+            </form>
+        </div>
+    </section>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="https://unpkg.com/counterup2@2.0.2/dist/index.js">	</script>
+
+    <script>
+
+        //***********************************************************
+        $(function () {
+            // 判斷是否登入
+            if (getCookie("UID01") != "") {
+                // UID01存在，傳遞至後端api，判斷是否合法
+                var dataJSON = {};
+                dataJSON["UID01"] = getCookie("UID01");
+                console.log(JSON.stringify(dataJSON));
+                $.ajax({
+                    type: "POST",
+                    url: "Relaxpc-admin-check_uid-api.php",
+                    data: JSON.stringify(dataJSON),
+                    dataType: "json",
+                    success: showdata_Check_UID,
+                    error: function () {
+                        alert("error-Relaxpc-admin-check_uid-api.php");
+                    }
+                });
+            }
+
+            // 即時監聽 #admin-name
+            $("#username").bind("input propertychange", function () {
+                if ($(this).val().length > 5 && $(this).val().length < 17) {
+                    // 符合規定，傳遞至後端檢查帳號是否存在
+                    var dataJSON = {};
+                    dataJSON["username"] = $("#username").val();
+                    console.log(JSON.stringify(dataJSON));
+
+                    $.ajax({
+                        type: "POST",
+                        url: "Relaxpc-admin-check_uni_api.php",
+                        data: JSON.stringify(dataJSON),
+                        dataType: "json",
+                        success: showdata_check_uni,
+                        error: function () {
+                            alert("error-Relaxpc-admin-check_uni_api.php");
+                        }
+                    });
+                } else {
+                    // 不符合規定
+                    $(this).removeClass('is-valid');
+                    $(this).removeClass('is-invalid');
+                    flag_username = false;
+                }
+            });
+
+            //登入按鈕監聽 #login_btn
+            $("#login_btn").click(function () {
+                //console.log($("#login_username").val()+$("#login_password").val());
+                //{"Username":"XX", "Password":"XXX"}
+                var dataJSON = {};
+                dataJSON["username"] = $("#login_username").val();
+                dataJSON["userpwd"] = $("#login_password").val();
+                console.log(JSON.stringify(dataJSON));
+
+                //傳遞至後端執行登入行為
+                $.ajax({
+                    type: "POST",
+                    url: "Relaxpc-admin-login_api.php",
+                    data: JSON.stringify(dataJSON),
+                    dataType: "json",
+                    success: showdata_login,
+                    error: function () {
+                        alert("error-Relaxpc-admin-login_api.php");
+                    }
+                });
+            });
+        });
+
+        function showdata_check_uni(data) {
+            console.log(data);
+            if (data.state) {
+                //帳號不存在, 可以使用!
+                $("#username").removeClass('is-invalid');
+                $("#username").addClass('is-valid');
+                flag_username = true;
+            } else {
+                //帳號存在, 不可以使用!
+                $("#username").removeClass('is-valid');
+                $("#username").addClass('is-invalid');
+                flag_username = false;
+            }
+        }
+
+        function showdata_login(data) {
+            console.log(data);
+            if (data.state) {
+                alert(data.message);
+                // console.log(data.data[0].UID01);
+                var uid01 = data.data[0].UID01;
+                setCookie("UID01", uid01, 7);
+                $("#loginModal").modal("hide");
+                $("#user_message").text(data.data[0].username + "登入中!");
+
+                //隱藏登入註冊按鈕
+                $("#user_btn").addClass("d-none");
+
+                //顯示高級功能
+                $("#s02_member_btn01").removeClass("disabled");
+                $("#s02_member_btn02").removeClass("disabled");
+                $("#s02_member_btn03").removeClass("disabled");
+
+                //顯示登出按鈕
+                $("#logout_btn").removeClass("d-none");
+
+                location.href = "Relaxpc-admin-index.html"
+            } else {
+                alert(data.message);
+            }
+        }
+
+        function showdata_Check_UID(data) {
+            console.log(data);
+            if (data.state) {
+                //驗證成功
+                $("#user_message").text(data.data[0].username + "登入中!");
+                $("#login_btn").addClass("d-none");
+
+                //顯示高級功能
+                $("#s02_member_btn01").removeClass("disabled");
+                $("#s02_member_btn02").removeClass("disabled");
+                $("#s02_member_btn03").removeClass("disabled");
+
+                //顯示登出按鈕
+                $("#logout_btn").removeClass("d-none");
+            }
+        }
+
+        //w3school
+        function setCookie(cname, cvalue, exdays) {
+            const d = new Date();
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            let expires = "expires=" + d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        }
+
+        //w3s
+        function getCookie(cname) {
+            let name = cname + "=";
+            //decodedCookie解碼 document.cookie取得瀏覽器cookie 
+            let decodedCookie = decodeURIComponent(document.cookie);
+            let ca = decodedCookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+    </script>
+</body>
+
+</html>

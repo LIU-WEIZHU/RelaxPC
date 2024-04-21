@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>促銷活動</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/myall.css">
+    <style>
+        .img01 {
+            height: 500px;
+            background-image: url(img/600-3.jpg);
+        }
+
+        .img02 {
+            height: 500px;
+            background-image: url(img/coolpc-12th-gen-k-2024-lt2.jpg);
+        }
+
+        .img03 {
+            height: 500px;
+            background-image: url(img/coolpc-20240215-min.jpg);
+        }
+
+        .img04 {
+            height: 500px;
+            background-image: url(img/coolpc-acer-gamingchair240227-fb.jpg);
+        }
+
+        .img05 {
+            height: 500px;
+            background-image: url(img/coolpc-corsair-k55rpkap240223-fb2.jpg);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- section01 navbar -->
+    <section>
+        <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="Relaxpc-users-index.html">首頁</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="Relaxpc-users-discount.html">促銷活動</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Relaxpc-users-product.html">產品</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Relaxpc-users-buy.html">配單</a>
+                        </li>
+                    </ul>
+                    <div>
+                        <li class="nav-item" id="user_btn">
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal">
+                                <i class="fa-solid fa-user fa-2x text-primary"></i>
+                            </a>
+                        </li>
+                    </div>
+                    <span class="text-warning h3" id="user_message"></span>
+                    <div>
+                        <li class="nav-item d-none" id="logout_btn">
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#logout_btn">
+                                <i class="fa-solid fa-right-from-bracket fa-2x text-danger"></i>
+                            </a>
+                        </li>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </section>
+
+    <!-- section01 loginModal -->
+    <section>
+        <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header text-bg-warning">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">會員登入</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="" class="form-label">帳號</label>
+                            <input type="text" class="form-control" placeholder="請輸入帳號!" id="login_username"
+                                name="login_username">
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">密碼</label>
+                            <input type="password" class="form-control" placeholder="請輸入密碼!" id="login_password"
+                                name="login_password">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#" class="me-auto" data-bs-toggle="modal" data-bs-target="#registerModal">註冊帳號</a>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            取消</button>
+                        <button type="button" class="btn btn-warning" id="login_btn">
+                            確認登入</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- section01 registerModal -->
+    <section>
+        <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header bg-warning">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">會員註冊</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label for="username" class="form-label">帳號</label>
+                                    <input type="text" id="username" name="username" class="form-control"
+                                        placeholder="請輸入帳號 6~16字">
+                                    <div class="valid-feedback" id="valid_message">帳號輸入格式正確</div>
+                                    <div class="invalid-feedback" id="invalid_message">帳號輸入格式錯誤</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="userpwd" class="form-label">密碼</label>
+                                    <input type="password" id="userpwd" name="userpwd" class="form-control"
+                                        placeholder="請輸入密碼 6~16字">
+                                    <div class="valid-feedback">密碼輸入格式正確</div>
+                                    <div class="invalid-feedback">密碼輸入格式錯誤</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="repassword" class="form-label">確認密碼</label>
+                                    <input type="password" id="repassword" name="repassword" class="form-control"
+                                        placeholder="再次輸入密碼">
+                                    <div class="valid-feedback">密碼輸入正確</div>
+                                    <div class="invalid-feedback">密碼輸入錯誤</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="useraddr" class="form-label">地址</label>
+                                    <input type="text" id="useraddr" name="useraddr" class="form-control"
+                                        placeholder="請輸入地址 最多64字">
+                                    <div class="valid-feedback">地址輸入格式正確</div>
+                                    <div class="invalid-feedback">地址輸入格式錯誤</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="userphone" class="form-label">電話</label>
+                                    <input type="text" id="userphone" name="userphone" class="form-control"
+                                        placeholder="請輸入電話最多10碼">
+                                    <div class="valid-feedback">電話輸入格式正確</div>
+                                    <div class="invalid-feedback">電話輸入格式錯誤</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="usermail" class="form-label">Email</label>
+                                    <input type="text" id="usermail" name="usermail" class="form-control"
+                                        placeholder="請輸入Email 最多32字">
+                                    <div class="valid-feedback">Email輸入格式正確</div>
+                                    <div class="invalid-feedback">Email輸入格式錯誤</div>
+                                </div>
+                            </div>
+
+                            <div class="col-6 content">
+                                <h3>會員註冊守則</h3>
+                                <p>1. 給他一口氣有很多通知員工建材有點平台閲讀者，廣泛以前社會主義面前法律責任類型暫無溝通戰爭，鐵路能量。</p>
+                                <p>2. 一天值得地方你自己嘉義列表陽明山體力衝突，一副不去許可是誰固定哈哈你有，能夠秘密，兩種無法，成員醫。</p>
+                                <p>3. 演唱精靈教程裝備，培訓適應的話也沒實行我們所謂山西貼圖相同編輯人群，預覽案例交通，生命它的，保健一。</p>
+                                <p>4. 標誌採購看過紀念主演臨床對象，馬上技術相關圖片差不多背景音樂今日鑒定營養，一座房地產，請在點這裡下。</p>
+                                <hr>
+                                <p>我們承諾嚴格保護會員的個人資料和隱私。這些會員資訊將僅用於確認您的身份，確保您的訂單準確發送以及聯絡您，不會被用於其他商業用途。</p>
+                                <div class="form-check">
+                                    <input type="checkbox" id="recheckbox" name="recheckbox"
+                                        class="form-check-input is-invalid">
+                                    <label for="recheckbox" class="form-check-label">已閱讀並遵守</label>
+                                    <div class="valid-feedback">已同意遵守規範</div>
+                                    <div class="invalid-feedback">請勾選！</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#" class="me-auto" data-bs-toggle="modal" data-bs-target="#loginModal">已有帳號，登入去！</a>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                        <button type="button" id="reg_btn" name="reg_btn" class="btn btn-primary">註冊</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div style="background-color: var(--mycolor25); color: var(--textcolor01);">
+        <div class="container-fluid">
+            <div class="text-center">
+                <h1 class="fw-900">促銷活動</h1>
+            </div>
+        </div>
+
+        <!-- 促銷活動 -->
+        <section>
+            <div class="container">
+                <div class="timeline-section">
+                    <div class="row mt-3 justify-content-center align-items-center timeline-pointer">
+                        <div class="col-md-5 text-center">
+                            <div class="text01">
+                                <h3 class="fw-900 text-danger">最甜的銀白情人節！</h3>
+                                <p>西洋情人節送情人不一樣的禮物！
+                                    情人節還在想要送什麼給情人？！小編推薦你送技嘉White White 惹人愛的純白色系主機板或顯卡，看是要升級半套還是組整台都可以！提供 Intel & AMD
+                                    最新平台主板，可依手上預算和使用需求來挑選主機板等級，供電部分完全不需要擔心，足以應付Intel & AMD頂級處理需求，追求最新技術就選最貴有Wi-Fi
+                                    7無線網路的主板，會打遊戲需求或者是影像編輯、AI繪圖就再搭一張 NVIDIA RTX 40
+                                    AERO系列顯卡加強顯示效能！現在來原價屋購買技嘉指定白色主機板、顯示卡，現場就送羅技 G102
+                                    炫彩遊戲滑鼠(價值$499元、不限顏色)，歡迎有興趣的朋友可以利用網路下單，或到門市做詢問啦！數量有限，送完為止。</p>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="img01 bg-info bg-cover"></div>
+                        </div>
+                    </div>
+                    <div class="row mt-3 justify-content-center align-items-center flex-row-reverse timeline-pointer">
+                        <div class="col-md-5 text-center">
+                            <div class="text01">
+                                <h3 class="fw-900 text-success">Intel K 版神 U 猜燈謎，直接公布答案 NT.4990！</h3>
+                                <p>感謝年前 300 顆搶購一空，年後緊急加單空運抵台，我們給您最高的 C/P 值饗宴，不用 5000 塊就能晉升 i5 玩家，成熟穩定的 Intel
+                                    表現更一直穩佔玩家心中首選，不用擔心自己還需要具備 debug 的能力，原本只能強調的 C/P 值的 Ａ 家在面對 i
+                                    皇這波之下毫無招架能力，原價屋秉持給玩家最好最多的選擇，來了！這架班機不僅僅空投 i5 下來，我們還替大夥爭取到了 i7 跟 i9
+                                    這等重型武器！沒辦法…原價屋就是這麼貼心，新年有 Intel 好康相伴，何止元宵節快樂，讓你年年都幸福美滿！</p>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="img02 bg-info bg-cover"></div>
+                        </div>
+                    </div>
+                    <div class="row mt-3 justify-content-center align-items-center timeline-pointer">
+                        <div class="col-md-5 text-center">
+                            <div class="text01">
+                                <h3 class="fw-900 text-danger ">學霸課業玩樂 All Pass！COUGAR 開學季指定商品限時七五折優惠！</h3>
+                                <p>這次春節有來消費的朋友們，開工忙碌之餘，也要記得拿出原價屋發票來對獎喔(點我查看)，搞不好抽中了筆電、螢幕、投影機等大獎你都不知道呢！這次「COUGAR
+                                    美洲獅」為了讓大家開工大吉、學業有成、事事順利 All
+                                    Pass！可是拿出各式經典周邊做優惠，不管新年開工還是開學，遊戲也不能落下！對於學生族群或是小資族的你一定要來看看，像最受歡迎的62g超輕量 Airblader
+                                    、可編輯12鍵的 Dualblader，經典趴握設計 SURPASSION EX，甚至還有少見的剪刀腳電競鍵盤 Cougar Vantar Ax！現在來原價屋購買
+                                    COUGAR 指定品項通通75折！這麼多好康還不快來挑一個趁手的～當然優惠肯定是限量啦，有興趣的朋友們可到原價屋門市、線上估價、蝦皮商城購買喔。</p>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="img03 bg-info bg-cover"></div>
+                        </div>
+                    </div>
+                    <div class="row mt-3 justify-content-center align-items-center flex-row-reverse timeline-pointer">
+                        <div class="col-md-5 text-center">
+                            <div class="text01">
+                                <h3 class="fw-900 text-success">貫徹俠道精神！治癒玩家精氣神！Acer Predator 黯夜遊俠電競椅情義七折價！</h3>
+                                <p>就是知道大家都是專業玩家，所以才要推薦專業級的設備啊！為了提升整體的遊戲和生活品質，知名品牌 Acer 的電競系列 Predator
+                                    也特別推出了「黯夜遊俠電競椅」，我們年初也特別做了篇開箱讓大家好好的了解一番，這回更是要推出限量的優惠活動來迎接開學！而且還是一次就給了兩千多的優惠折扣！這麼好康還真的是不能錯過呢，有想要入手電競椅的朋友，真的不要放掉這個好機會，數量有限，賣完就沒有囉～
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="img04 bg-info bg-cover"></div>
+                        </div>
+                    </div>
+                    <div class="row mt-3 justify-content-center align-items-center timeline-pointer">
+                        <div class="col-md-5 text-center">
+                            <div class="text01">
+                                <h3 class="fw-900 text-danger">新學期帶這組先省一半！CORSAIR K55 RGB PRO＋Katar PRO 鍵鼠組只要990！</h3>
+                                <p>每到開學季，原價屋就是有這麼多福利好撈～像今天這組「CORSAIR K55 RGB PRO＋Katar PRO
+                                    鍵鼠組」就真的非常的超值，兩樣產品加起來原價$2380，現在限量優惠只要破千的990就能入手！這麼殺的價格當然馬上來原價屋撈回去啊～另外同期間還有多樣的海盜船指定電競周邊也在做活動，除了有鍵盤、滑鼠，還有無線耳機也通通在促銷呢，事不宜遲，趕緊來原價屋好好的逛逛吧！
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="img05 bg-info bg-cover"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- section Footer -->
+        <section>
+            <div class="container-fluid">
+                <div class="row">
+                    <ul class="nav justify-content-end bg-black">
+                        <li class="nav-item me-auto">
+                            <a class="nav-link text-white" href="#" style="font-size: 20px;"><i
+                                    class="fa-solid fa-desktop fa-2x px-3"></i>RelaxPc</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#"><i
+                                    class="fa-brands fa-instagram px-2 fa-2x"></i>Instagram</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#"><i
+                                    class="fa-brands fa-square-facebook px-2 fa-2x"></i>Facebook</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="https://unpkg.com/counterup2@2.0.2/dist/index.js">	</script>
+
+    <script>
+
+        //***********************************************************
+        var flag_username = false;
+        var flag_userpwd = false;
+        var flag_re_password = false;
+        var flag_useraddr = false;
+        var flag_userphone = false;
+        var flag_useremail = false;
+        var flag_checkbox = false;
+
+        $(function () {
+            // 判斷是否登入
+            if (getCookie("UID01") != "") {
+                // UID01存在，傳遞至後端api，判斷是否合法
+                var dataJSON = {};
+                dataJSON["UID01"] = getCookie("UID01");
+                console.log(JSON.stringify(dataJSON));
+                $.ajax({
+                    type: "POST",
+                    url: "Relaxpc-users-check_uid-api.php",
+                    data: JSON.stringify(dataJSON),
+                    dataType: "json",
+                    success: showdata_Check_UID,
+                    error: function () {
+                        alert("error-Relaxpc-users-check_uid-api.php");
+                    }
+                });
+            }
+
+            // 登出按鈕監聽 #logout_btn
+            $("#logout_btn").click(function () {
+                setCookie("UID01", "", 7)
+                location.href = "Relaxpc-users-index.html";
+            });
+
+            // 即時監聽 #username
+            $("#username").bind("input propertychange", function () {
+                if ($(this).val().length > 5 && $(this).val().length < 17) {
+                    // 符合規定，傳遞至後端檢查帳號是否存在
+                    var dataJSON = {};
+                    dataJSON["username"] = $("#username").val();
+                    console.log(JSON.stringify(dataJSON));
+
+                    $.ajax({
+                        type: "POST",
+                        url: "Relaxpc-users-check_uni_api.php",
+                        data: JSON.stringify(dataJSON),
+                        dataType: "json",
+                        success: showdata_check_uni,
+                        error: function () {
+                            alert("error-Relaxpc-users-check_uni_api.php");
+                        }
+                    });
+                } else {
+                    // 不符合規定
+                    $(this).removeClass('is-valid');
+                    $(this).removeClass('is-invalid');
+                    flag_username = false;
+                }
+            });
+
+            // 即時監聽 #password
+            $("#userpwd").bind("input propertychange", function () {
+                // console.log($(this).val().length); is-invalid
+                if ($(this).val().length > 4 && $(this).val().length < 11) {
+                    //符合規定
+                    $(this).removeClass('is-invalid');
+                    $(this).addClass('is-valid');
+                    flag_userpwd = true;
+                } else {
+                    //不符合規定
+                    $(this).removeClass('is-valid');
+                    $(this).addClass('is-invalid');
+                    flag_userpwd = false;
+                }
+            });
+
+            // 即時監聽 #re_password
+            $("#repassword").bind("input propertychange", function () {
+                if ($(this).val() == $("#userpwd").val()) {
+                    //符合規定
+                    $(this).removeClass('is-invalid');
+                    $(this).addClass('is-valid');
+                    flag_re_password = true;
+                } else {
+                    //不符合規定
+                    $(this).removeClass('is-valid');
+                    $(this).addClass('is-invalid');
+                    flag_re_password = false;
+                }
+            });
+
+            // 即時監聽 #useraddr
+            $("#useraddr").bind("input propertychange", function () {
+                if ($(this).val() == $("#useraddr").val()) {
+                    // 符合規定
+                    $(this).removeClass('is-invalid');
+                    $(this).addClass('is-valid');
+                    flag_useraddr = true;
+                } else {
+                    //不符合規定
+                    $(this).removeClass('is-valid');
+                    $(this).addClass('is-invalid');
+                    flag_useraddr = false;
+                }
+            });
+
+            // 即時監聽 #userphone
+            $("#userphone").bind("input propertychange", function () {
+                if ($(this).val() == $("#userphone").val()) {
+                    // 符合規定
+                    $(this).removeClass('is-invalid');
+                    $(this).addClass('is-valid');
+                    flag_userphone = true;
+                } else {
+                    //不符合規定
+                    $(this).removeClass('is-valid');
+                    $(this).addClass('is-invalid');
+                    flag_userphone = false;
+                }
+            });
+
+            //即時監聽 #email
+            $("#useremail").bind("input propertychange", function () {
+                // console.log($(this).val().length); is-invalid
+                if ($(this).val().length > 0 && $(this).val().length < 51) {
+                    //符合規定
+                    $(this).removeClass('is-invalid');
+                    $(this).addClass('is-valid');
+                    flag_useremail = true;
+                } else {
+                    //不符合規定
+                    $(this).removeClass('is-valid');
+                    $(this).addClass('is-invalid');
+                    flag_useremail = false;
+                }
+            });
+
+            //監聽 checkbox #checkbox
+            $("#checkbox").change(function () {
+                if ($(this).is(":checked")) {
+                    //console.log("遵守");
+                    flag_checkbox = true;
+                } else {
+                    //console.log("不遵守");  
+                    flag_checkbox = false;
+                }
+            });
+
+            //註冊按鈕監聽 #reg_btn
+            $("#reg_btn").click(function () {
+                // console.log("test");             
+                if (flag_username && flag_userpwd && flag_re_password && flag_useraddr && flag_userphone && flag_useremail && flag_checkbox) {
+                    //{"Username":"XX", "Password":"XXX", "Email":"XXXXX"}
+                    var dataJSON = {};
+                    dataJSON["username"] = $("#username").val();
+                    dataJSON["userpwd"] = $("#userpwd").val();
+                    dataJSON["useraddr"] = $("#useraddr").val();
+                    dataJSON["userphone"] = $("#userphone").val();
+                    dataJSON["useremail"] = $("#useremail").val();
+
+                    console.log(JSON.stringify(dataJSON));
+
+                    //傳遞至後端執行註冊行為
+                    $.ajax({
+                        type: "POST",
+                        url: "Relaxpc-users-create-api.php",
+                        data: JSON.stringify(dataJSON),
+                        dataType: "json",
+                        success: showdata,
+                        error: function () {
+                            alert("error_Relaxpc-users-create-api.php");
+                        }
+                    });
+
+                } else {
+                    alert("欄位有錯請修正!");
+                }
+            });
+            //登入按鈕監聽 #login_btn
+            $("#login_btn").click(function () {
+                //console.log($("#login_username").val()+$("#login_password").val());
+                //{"Username":"XX", "Password":"XXX"}
+                var dataJSON = {};
+                dataJSON["username"] = $("#login_username").val();
+                dataJSON["userpwd"] = $("#login_password").val();
+                console.log(JSON.stringify(dataJSON));
+
+                //傳遞至後端執行登入行為
+                $.ajax({
+                    type: "POST",
+                    url: "Relaxpc-users-login_api.php",
+                    data: JSON.stringify(dataJSON),
+                    dataType: "json",
+                    success: showdata_login,
+                    error: function () {
+                        alert("error-Relaxpc-users-login_api.php");
+                    }
+                });
+            });
+        });
+
+        function showdata(data) {
+            console.log(data);
+            if (data.state) {
+                alert(data.message);
+                location.href = "Relaxpc-users-index.html"
+            } else {
+                alert(data.message);
+            }
+        }
+
+        function showdata_check_uni(data) {
+            console.log(data);
+            if (data.state) {
+                //帳號不存在, 可以使用!
+                $("#username").removeClass('is-invalid');
+                $("#username").addClass('is-valid');
+                flag_username = true;
+            } else {
+                //帳號存在, 不可以使用!
+                $("#username").removeClass('is-valid');
+                $("#username").addClass('is-invalid');
+                flag_username = false;
+            }
+        }
+
+        function showdata_login(data) {
+            console.log(data);
+            if (data.state) {
+                alert(data.message);
+                // console.log(data.data[0].UID01);
+                var uid01 = data.data[0].UID01;
+                setCookie("UID01", uid01, 7);
+                $("#loginModal").modal("hide");
+                $("#user_message").text(data.data[0].username + "登入中!");
+
+                //隱藏登入註冊按鈕
+                $("#user_btn").addClass("d-none");
+
+                //顯示高級功能
+                $("#s02_member_btn01").removeClass("disabled");
+                $("#s02_member_btn02").removeClass("disabled");
+                $("#s02_member_btn03").removeClass("disabled");
+
+                //顯示登出按鈕
+                $("#logout_btn").removeClass("d-none");
+            } else {
+                alert(data.message);
+            }
+        }
+
+        function showdata_Check_UID(data) {
+            console.log(data);
+            if (data.state) {
+                //驗證成功
+                $("#user_message").text(data.data[0].username + "登入中!");
+                $("#user_btn").addClass("d-none");
+
+                //顯示高級功能
+                $("#s02_member_btn01").removeClass("disabled");
+                $("#s02_member_btn02").removeClass("disabled");
+                $("#s02_member_btn03").removeClass("disabled");
+
+                //顯示登出按鈕
+                $("#logout_btn").removeClass("d-none");
+            }
+        }
+
+        //w3school
+        function setCookie(cname, cvalue, exdays) {
+            const d = new Date();
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            let expires = "expires=" + d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        }
+
+        //w3s
+        function getCookie(cname) {
+            let name = cname + "=";
+            //decodedCookie解碼 document.cookie取得瀏覽器cookie 
+            let decodedCookie = decodeURIComponent(document.cookie);
+            let ca = decodedCookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+    </script>
+</body>
+
+</html>
