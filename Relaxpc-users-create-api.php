@@ -5,6 +5,7 @@
     // {"state" : false, "message" : "傳遞參數格式錯誤!"}
     // {"state" : false, "message" : "未傳遞任何參數!"}
 
+
     $data = file_get_contents("php://input", "r");
     if($data != ""){
         $mydata = array();
